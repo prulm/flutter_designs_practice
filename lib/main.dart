@@ -1,8 +1,19 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_designs_practice/screens/login.dart';
 
-void main() {
-  runApp(const Practice());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+        supportedLocales: [Locale('en', 'US'), Locale('am', 'ET')],
+        path:
+            'assets/translations',
+        fallbackLocale: Locale('en', 'US'),
+        child: Practice()),
+  );
 }
 
 class Practice extends StatelessWidget {
