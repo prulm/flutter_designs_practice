@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_designs_practice/screens/checkout.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -210,7 +211,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   )
                 : SizedBox(),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CheckOut()));
+              },
               child: Text(
                 "Login",
                 style: TextStyle(
