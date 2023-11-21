@@ -32,11 +32,16 @@ class _CheckOutState extends State<CheckOut> {
   double subtotal = 0;
 
   List<String> getAmount() {
+    subtotal = 0;
     for (int i = 0; i < items; i++) {
       subtotal += item_types[i]["price"];
     }
     double tax = subtotal * .15;
-    return [subtotal.toString(), tax.toString(), (subtotal + tax).toString()];
+    return [
+      subtotal.toString(),
+      tax.toStringAsFixed(2),
+      (subtotal + tax).toStringAsFixed(2)
+    ];
   }
 
   @override
@@ -168,74 +173,84 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                   );
                 }),
-            Container(
-              width: MediaQuery.of(context).size.width * .6, 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  ListTile(
-                    visualDensity: VisualDensity(vertical: -4),
-                    title: Text("Subtotal"),
-                    trailing: Text("14 ETB"),
-                    titleTextStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    leadingAndTrailingTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
+            Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        ListTile(
+                          visualDensity: VisualDensity(vertical: -4),
+                          title: Text("Subtotal"),
+                          trailing: Text("${getAmount()[0]} ETB"),
+                          titleTextStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          leadingAndTrailingTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ListTile(
+                          visualDensity: VisualDensity(vertical: -4),
+                          title: Text("Tax(15%)"),
+                          trailing: Text("${getAmount()[1]} ETB"),
+                          titleTextStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          leadingAndTrailingTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ListTile(
+                          visualDensity: VisualDensity(vertical: -4),
+                          title: Text("Discount"),
+                          trailing: Text("0 ETB"),
+                          titleTextStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          leadingAndTrailingTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ListTile(
+                          visualDensity: VisualDensity(vertical: -4),
+                          title: Text("Shipping Fee"),
+                          trailing: Text("10 ETB"),
+                          titleTextStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          leadingAndTrailingTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ListTile(
+                          visualDensity: VisualDensity(vertical: -3),
+                          title: Text("Total"),
+                          trailing: Text("${getAmount()[2]} ETB"),
+                          titleTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                          leadingAndTrailingTextStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  ListTile(
-                    visualDensity: VisualDensity(vertical: -4),
-                    title: Text("Tax(15%)"),
-                    trailing: Text("12 ETB"),
-                    titleTextStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    leadingAndTrailingTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                  ListTile(
-                    visualDensity: VisualDensity(vertical: -4),
-                    title: Text("Discount"),
-                    trailing: Text("0 ETB"),
-                    titleTextStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    leadingAndTrailingTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                  ListTile(
-                    visualDensity: VisualDensity(vertical: -4),
-                    title: Text("Shipping Fee"),
-                    trailing: Text("10 ETB"),
-                    titleTextStyle: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    leadingAndTrailingTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                  ListTile(
-                    visualDensity: VisualDensity(vertical: -3),
-                    title: Text("Total"),
-                    trailing: Text("234 ETB"),
-                    titleTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                    leadingAndTrailingTextStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
