@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_designs_practice/screens/login.dart';
 
 class LocalizationPractice extends StatefulWidget {
   const LocalizationPractice({super.key});
@@ -30,7 +31,7 @@ class _LocalizationPracticeState extends State<LocalizationPractice> {
                       ? Colors.white
                       : Colors.blue,
                 ),
-              ),
+              ).tr(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: context.locale == Locale('en', 'US')
                     ? Colors.blue
@@ -50,17 +51,21 @@ class _LocalizationPracticeState extends State<LocalizationPractice> {
                       ? Colors.white
                       : Colors.blue,
                 ),
-              ),
+              ).tr(),
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    context.locale == Locale('am', 'ET') ? Colors.blue : Colors.white,
+                backgroundColor: context.locale == Locale('am', 'ET')
+                    ? Colors.blue
+                    : Colors.white,
               ),
             ),
             SizedBox(
               height: 150,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
               child: Container(
                 width: 75,
                 child: Row(

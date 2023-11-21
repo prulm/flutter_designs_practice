@@ -86,8 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.all(30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
@@ -102,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: () {},
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.g_mobiledata, color: Colors.black),
                   Text(
@@ -115,10 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
-                backgroundColor: Colors.white,
                 alignment: Alignment.center,
-                onPrimary: Colors.black,
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 150),
               ),
             ),
             SizedBox(height: 10),
@@ -168,8 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             showStrengthBar
                 ? Container(
-                    width: 400,
-                    height: 100,
+                    width: MediaQuery.of(context).size.width * .5,
+                    height: 50,
                     child: StreamBuilder(
                         stream: _streamController.stream,
                         builder: (context, snapshot) {
@@ -193,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return Row(
                             children: [
                               Container(
-                                width: 220,
+                                width: MediaQuery.of(context).size.width * .3,
                                 height: 5,
                                 margin: EdgeInsets.only(left: 8),
                                 child: LinearProgressIndicator(
@@ -203,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Container(
-                                width: 70,
+                                width: MediaQuery.of(context).size.width * .2,
                                 margin: EdgeInsets.only(left: 8),
                                 child: Text(password_strength),
                               ),
@@ -212,7 +209,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         }),
                   )
                 : SizedBox(),
-            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},
               child: Text(
@@ -225,7 +221,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 backgroundColor: const Color.fromARGB(255, 2, 25, 44),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30))),
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 200),
               ),
             ),
           ],
